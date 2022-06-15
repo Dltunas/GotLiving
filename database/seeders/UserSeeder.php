@@ -16,24 +16,20 @@ class UserSeeder extends Seeder
     public function run()
     {
         $usuario = new Usuario();
-        $usuario->username = 'Alfredo';
+        $usuario->username = 'dltunasd@gmail.com';
         $usuario->password = Hash::make('ola12345');
         $usuario->save();
 
         $usuario = new Usuario();
-        $usuario->username = 'Asael';
+        $usuario->username = 'salomon@gmail.com';
         $usuario->password = Hash::make('ola12345');
         $usuario->save();
 
         $usuario = new Usuario();
-        $usuario->username = 'Israel';
+        $usuario->username = 'israel@gmail.com';
         $usuario->password = Hash::make('ola12345');
         $usuario->save();
 
-        $usuario = new Usuario();
-        $usuario->username = 'Leslie';
-        $usuario->password = Hash::make('ola12345');
-        $usuario->save();
 
     }
 }

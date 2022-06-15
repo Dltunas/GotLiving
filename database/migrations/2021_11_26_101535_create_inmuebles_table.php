@@ -18,7 +18,7 @@ class CreateInmueblesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('idArrendatario');
-            $table->foreign('idArrendatario')->references('id')->on('clientes')->onDelete('cascade');
+            $table->foreign('idArrendatario')->references('id')->on('arrendatarios')->onDelete('cascade');
 
             $table->text('descripcion');
             $table->text('titulo');

@@ -39,12 +39,8 @@ class Usuario extends Authenticatable implements JWTSubject
 
     //Para acceder a cuenta desde Usuario
     public function cuenta(){
-        return $this->hasOne(Cuenta::class, 'idUsuario');
+        return $this->hasOne(Cliente::class, 'idUsuario');
     }
-
-    public function posts(){
-        return $this->hasMany(Post::class, 'idUsuario');
-    }
-
+    
 
 }

@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cuenta extends Model
+
+class Inmueble extends Model
 {
     use HasFactory;
 
-    use HasFactory;
+    /**
+     * @var mixed
+     */
+    private $idUsuario;
 
-    protected $fillable = [
-        'nombre', 'apellidos',
-    ];
-
-    public function usuario(){
+    public function usuario(){ // saca los posts de los usuarios
         return $this->belongsTo(Usuario::class, 'idUsuario');
     }
 
