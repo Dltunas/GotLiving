@@ -42,3 +42,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     //Post
     Route::get('{idUsuario}/getPostsPerfilUsuario', [PostController::class, 'getPostsPerfilUsuario']); //Ver los posts del arrendatario en su perfil (No se si es necesario)
 });
+
+Route::get('/perfilArrendatario', function (){
+    return view ('perfilArrendatario');
+});

@@ -14,9 +14,7 @@ class CreateArrendatariosTable extends Migration
     public function up()
     {
         Schema::create('arrendatarios', function (Blueprint $table) {
-            $table->id();
-
-            $table->unsignedBigInteger('idArrendatario')->unique();
+            $table->id('idArrendatario');
 
             $table->string('nombre');
             $table->string('apellidos');

@@ -14,17 +14,17 @@ class CreateRentasTable extends Migration
     public function up()
     {
         Schema::create('rentas', function (Blueprint $table) {
-
-            $table->id();
-
-            $table->unsignedBigInteger('idRenta');
+            $table->id('idRenta');
 
             $table->integer('estadoPago');
             $table->text('tiempoRenta');
             $table->integer('calificacionIndividual');
 
-            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
-            $table->foreign('idInmueble')->references('id')->on('inmuebles')->onDelete('cascade');
+            $table->unsignedBigInteger('idCliente');
+            $table->foreign('idCliente')->references('idCliente')->on('clientes')->onDelete('cascade');
+
+            $table->unsignedBigInteger('idInmueble');
+            $table->foreign('idInmueble')->references('idInmueble')->on('inmuebles')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ class CreateRentasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inmuebles');
+        Schema::dropIfExists('rentas');
     }
 }
