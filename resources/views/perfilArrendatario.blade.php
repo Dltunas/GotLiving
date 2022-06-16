@@ -53,7 +53,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
             <!-- Muestra imágen de perfil -->
-              <img src="bootstrap/img/masterchief.jpg" alt="Perfil" class="rounded-circle">
+              <img src="{{url ('bootstrap/img/masterchief.jpg') }}" alt="Perfil" class="rounded-circle">
               
               <h2>{{ $arrendatario->nombre }}</h2>
             </div>
