@@ -7,6 +7,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CuentaController;
 use \App\Http\Controllers\PostController;
 use App\Http\Controllers\ArrendatarioController;
+use App\Http\Controllers\InmueblesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +45,21 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('{idUsuario}/getPostsPerfilUsuario', [PostController::class, 'getPostsPerfilUsuario']); //Ver los posts del arrendatario en su perfil (No se si es necesario)
 });
 
+//Salomon routes
+Route::get('/inmuebles', [InmueblesController::class, 'index'])->name('inmuebles');
+Route::post('/inmuebles', [InmueblesController::class, 'store'])->name('inmuebles');
+Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-edit');
+Route::patch('/inmuebles/{id}', [InmueblesController::class, 'update'])->name('inmuebles-update');
+Route::delete('/inmuebles/{id}', [InmueblesController::class, 'delete'])->name('inmuebles-destroy');
+Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
+
+//Israel routes
 Route::get('/perfilArrendatario', function (){
     return view ('perfilArrendatario');
 });
-
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
 Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario'])->name('obtenerArrendatario');
 
 
