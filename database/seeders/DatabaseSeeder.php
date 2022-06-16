@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClienteSeeder::class);
         $this->call(ArrendatarioSeeder::class);
         $this->call(InmuebleSeeder::class);
+        $this->call(RentaSeeder::class);
 
     }
 }

@@ -77,8 +77,9 @@
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Sobre mi</h5>
                   <p class="small fst-italic">{{ $arrendatario->descripcion }}</p>
-                  <h5 class="card-title">Detalles del perfil</h5>
 
+
+                  <h5 class="card-title">Detalles del perfil</h5>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nombre completo</div>
                     <div class="col-lg-9 col-md-8">{{ $arrendatario->nombre }} {{ $arrendatario->apellidos }}</div>
@@ -100,7 +101,7 @@
                   </div>
 
                 </div>
-        </div>
+            </div>
         </div>
         
 </section>
