@@ -14,10 +14,11 @@ class CreateArrendatariosTable extends Migration
     public function up()
     {
         Schema::create('arrendatarios', function (Blueprint $table) {
-            $table->id('idArrendatario');
+            $table->id();
 
             $table->string('nombre');
             $table->string('apellidos');
+            $table->string('urlFoto');
             $table->string('institucion');
             $table->string('correo_e')->unique();
             $table->string('telefono');

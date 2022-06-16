@@ -14,7 +14,7 @@ class CreateClientesTable extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id('idCliente');
+            $table->id();
             
             $table->string('nombre');
             $table->string('apellidos');
@@ -24,7 +24,7 @@ class CreateClientesTable extends Migration
             $table->string('descripcion')->nullable();
 
             $table->unsignedBigInteger("idUsuario");
-            $table->foreign('idUsuario')->references('idUsuario')->on('usuarios')->onDelete('cascade');
+            $table->foreign('idUsuario')->references('id')->on('usuarios')->onDelete('cascade');
 
             /*General error: 1005 Can't create table `gotliving_bd`.`clientes` (errno: 150 "Foreign key 
             constraint is incorrectly formed") (SQL: alter table `clientes` add constraint `clientes_idusuario_foreign` 

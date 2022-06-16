@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CuentaController;
 use \App\Http\Controllers\PostController;
+use App\Http\Controllers\ArrendatarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 Route::get('/perfilArrendatario', function (){
     return view ('perfilArrendatario');
 });
+
+Route::get('/invocadores', function () {
+    return view('ggs.index');
+})->name('arrendatarioExtraido');
+
+Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario'])->name('obtenerArrendatario');
+
+
