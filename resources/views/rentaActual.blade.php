@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Forms / Layouts - NiceAdmin Bootstrap Template</title>
@@ -40,75 +40,6 @@
   ======================================================== -->
 </head>
 <body>
-<main id="main" class="main">
-
-<div class="pagetitle">
-  <h1>Perfil</h1>
-</div>
-
-<section class="section profile">
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="card">
-            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-            <!-- Muestra imágen de perfil -->
-              <img src="bootstrap/img/masterchief.jpg" alt="Perfil" class="rounded-circle">
-              
-              <h2>{{ $arrendatario->nombre }}</h2>
-            </div>
-          </div>
-        </div>
-
-        
-      </div>
-
-</section>
-
-<div class="pagetitle">
-  <h1>Información general</h1>
-</div>
-
-<section class="section profile">
-<div class="row">
-<div class="col-xl-6">
-          <div class="card">
-            <div class="card-body">
-                <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title">Sobre mi</h5>
-                  <p class="small fst-italic">{{ $arrendatario->descripcion }}</p>
-                  <h5 class="card-title">Detalles del perfil</h5>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Nombre completo</div>
-                    <div class="col-lg-9 col-md-8">{{ $arrendatario->nombre }} {{ $arrendatario->apellidos }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Correo electrónico</div>
-                    <div class="col-lg-9 col-md-8">{{ $arrendatario->correo_e }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Institución</div>
-                    <div class="col-lg-9 col-md-8">{{ $arrendatario->institucion }}</div>
-                  </div> 
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Teléfono</div>
-                    <div class="col-lg-9 col-md-8">{{ $arrendatario->telefono }}</div>
-                  </div>
-
-                </div>
-        </div>
-        </div>
-        
-</section>
-
-<form action="/welcome">
-    <button type="submit" class="btn btn-primary btn-lg">Regresar</button> 
-</form>
-        
-</main>
+    
 </body>
 </html>
