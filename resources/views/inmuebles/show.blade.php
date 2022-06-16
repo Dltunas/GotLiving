@@ -25,7 +25,7 @@
 
                             <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Foto</div>
-                                <div class="col-lg-9 col-md-8"><img style="width: 100%; max-width: 300px" src="{{ asset('bootstrap/assets/img/casa1.jpg') }}"></div>
+                                <div class="col-lg-9 col-md-8"><img style="width: 100%; max-width: 300px" src="{{ asset('bootstrap/assets/imgcasas/'.$inmueble->foto) }}" class="rounded-circle"></div>
                             </div>
 
                             <div class="row">
@@ -59,8 +59,10 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Identificador del arrendatario</div>
-                                <div class="col-lg-9 col-md-8">{{ $inmueble->idArrendatario }}</div>
+                                <div class="col-lg-3 col-md-4 label">Arrendatario</div>
+                                <form action="/arrendatario/{{ $inmueble->idArrendatario }}" class="col-lg-9 col-md-8">
+                                    <button type="submit" class="btn btn-secondary">Ver perfil</button>
+                                </form>
                             </div>
 
                             <div class="row">

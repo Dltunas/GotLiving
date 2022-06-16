@@ -34,7 +34,7 @@
                                         <td>{{ $inmueble->precio }}</td>
                                         <td>
                                             <form action="{{ route('inmuebles-edit', ['id' => $inmueble -> id]) }}">
-                                                <button type="submit" class="btn btn-primary">Ver detalles</button>
+                                                <button type="submit" class="btn btn-primary">Reservar</button>
                                             </form>
                                         </td>
                                     </tr>
