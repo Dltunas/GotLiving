@@ -14,10 +14,7 @@ class CreateClientesTable extends Migration
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
-
-            $table->unsignedBigInteger('idCliente')->unique();
-            $table->foreign('idUsuario')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->id('idCliente');
 
             $table->string('nombre');
             $table->string('apellidos');
@@ -25,6 +22,9 @@ class CreateClientesTable extends Migration
             $table->string('correo_e')->unique();
             $table->string('telefono');
             $table->string('descripcion')->nullable();
+
+            $table->unsignedBigInteger('idUsuario');
+            $table->foreign('idUsuario')->references('idUsuario')->on('usuarios')->onDelete('cascade');
 
             $table->timestamps();
         });

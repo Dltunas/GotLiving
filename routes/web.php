@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\CuentaController;
 use \App\Http\Controllers\PostController;
+use App\Http\Controllers\InmueblesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,17 @@ Route::get('/', function (){
     return view ('login');
 });
 
+Route::get('/inmuebles', [InmueblesController::class, 'index'])->name('inmuebles');
+Route::post('/inmuebles', [InmueblesController::class, 'store'])->name('inmuebles');
+Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-edit');
+Route::patch('/inmuebles/{id}', [InmueblesController::class, 'update'])->name('inmuebles-update');
+Route::delete('/inmuebles/{id}', [InmueblesController::class, 'delete'])->name('inmuebles-destroy');
+
 Route::post('register', [UsuarioController::class, 'register']);    // registro usuario
 
 Route::post('login', [UsuarioController::class, 'authenticate']); //login
+
+//Route::resource('inmueble', InmueblesController::class);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 
