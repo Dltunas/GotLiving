@@ -17,7 +17,7 @@ class ArrendatarioSeeder extends Seeder
         $arrendatario = new Arrendatario();
         $arrendatario->nombre = 'Panchito';
         $arrendatario->apellidos='Perez';
-        $arrendatario->urlFoto='public/bootstrap/assets/img/masterchief.jpg';
+        $arrendatario->urlFoto='masterchief.jpg';
         $arrendatario->institucion='HAHA';
         $arrendatario->correo_e='fulano@gmail.com';
         $arrendatario->telefono='2285410253';
@@ -28,7 +28,7 @@ class ArrendatarioSeeder extends Seeder
         $arrendatario = new Arrendatario();
         $arrendatario->nombre = 'Zulma';
         $arrendatario->apellidos='Hernandez';
-        $arrendatario->urlFoto='public/bootstrap/assets/img/masterchief.jpg';
+        $arrendatario->urlFoto='marcusFenix.jpg';
         $arrendatario->institucion='RAF';
         $arrendatario->correo_e='sultana@gmail.com';
         $arrendatario->telefono='2281024778';
@@ -39,7 +39,7 @@ class ArrendatarioSeeder extends Seeder
         $arrendatario = new Arrendatario();
         $arrendatario->nombre = 'Juan';
         $arrendatario->apellidos='Camaney';
-        $arrendatario->urlFoto='public/bootstrap/assets/img/masterchief.jpg';
+        $arrendatario->urlFoto='señorbarriga.jpg';
         $arrendatario->institucion='SS';
         $arrendatario->correo_e='perengano@gmail.com';
         $arrendatario->telefono='2285136978';
