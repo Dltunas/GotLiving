@@ -14,17 +14,17 @@ class CreateRentasTable extends Migration
     public function up()
     {
         Schema::create('rentas', function (Blueprint $table) {
-            $table->id('idRenta');
+            $table->id();
 
             $table->integer('estadoPago');
             $table->text('tiempoRenta');
             $table->integer('calificacionIndividual');
 
             $table->unsignedBigInteger('idCliente');
-            $table->foreign('idCliente')->references('idCliente')->on('clientes')->onDelete('cascade');
+            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
 
             $table->unsignedBigInteger('idInmueble');
-            $table->foreign('idInmueble')->references('idInmueble')->on('inmuebles')->onDelete('cascade');
+            $table->foreign('idInmueble')->references('id')->on('inmuebles')->onDelete('cascade');
 
             $table->timestamps();
         });

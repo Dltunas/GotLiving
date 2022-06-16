@@ -18,14 +18,14 @@
         <tbody>
         @foreach($inmuebles as $inmueble)
             <tr>
-                <td>{{ $inmueble->idInmueble }}</td>
+                <td>{{ $inmueble->id }}</td>
                 <td>{{ $inmueble->titulo }}</td>
                 <td>{{ $inmueble->calificacionGlobal }}</td>
                 <td>{{ $inmueble->descripcion }}</td>
                 <td>{{ $inmueble->direccion }}</td>
                 <td>{{ $inmueble->precio }}</td>
                 <td>
-                    <form action="{{ route('inmuebles-edit', ['id' => $inmueble -> idInmueble]) }}">
+                    <form action="{{ route('inmuebles-edit', ['id' => $inmueble -> id]) }}">
                         <button type="submit" class="btn btn-primary">Ver detalles</button>
                     </form>
                 </td>
