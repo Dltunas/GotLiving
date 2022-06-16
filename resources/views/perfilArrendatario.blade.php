@@ -53,7 +53,8 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
             <!-- Muestra imágen de perfil -->
-              <img href="{{url('bootstrap/assets/img/masterchief.jpg)}}" alt="Profile" class="rounded-circle">
+              <img src="bootstrap/img/masterchief.jpg" alt="Perfil" class="rounded-circle">
+              
               <h2>{{ $arrendatario->nombre }}</h2>
             </div>
           </div>
@@ -70,7 +71,7 @@
 
 <section class="section profile">
 <div class="row">
-<div class="col-xl-8">
+<div class="col-xl-6">
           <div class="card">
             <div class="card-body">
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -101,8 +102,13 @@
                 </div>
         </div>
         </div>
-
+        
 </section>
+
+<form action="/welcome">
+    <button type="submit" class="btn btn-primary btn-lg">Regresar</button> 
+</form>
+        
 </main>
 </body>
 </html>

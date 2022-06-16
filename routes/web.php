@@ -48,9 +48,9 @@ Route::get('/perfilArrendatario', function (){
     return view ('perfilArrendatario');
 });
 
-Route::get('/invocadores', function () {
-    return view('ggs.index');
-})->name('arrendatarioExtraido');
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario'])->name('obtenerArrendatario');
 
