@@ -18,5 +18,4 @@ class Inmueble extends Model
     public function usuario(){ // saca los posts de los usuarios
         return $this->belongsTo(Usuario::class, 'idUsuario');
     }
-
 }

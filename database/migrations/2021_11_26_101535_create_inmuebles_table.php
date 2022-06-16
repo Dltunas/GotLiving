@@ -15,7 +15,7 @@ class CreateInmueblesTable extends Migration
     {
         Schema::create('inmuebles', function (Blueprint $table) {
             $table->id();
-            
+
             $table->text('descripcion');
             $table->text('titulo');
             $table->integer('calificacionGlobal');
@@ -25,8 +25,9 @@ class CreateInmueblesTable extends Migration
             $table->text('tiempoRentaMin');
             $table->text('precio');
             $table->text('foto');
+            $table->tinyInteger('estado');
 
-            $table->unsignedBigInteger("idArrendatario");
+            $table->unsignedBigInteger('idArrendatario');
             $table->foreign('idArrendatario')->references('id')->on('arrendatarios')->onDelete('cascade');
 
             $table->timestamps();
