@@ -29,6 +29,8 @@ Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmue
 Route::patch('/inmuebles/{id}', [InmueblesController::class, 'update'])->name('inmuebles-update');
 Route::delete('/inmuebles/{id}', [InmueblesController::class, 'delete'])->name('inmuebles-destroy');
 
+Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
+
 Route::post('register', [UsuarioController::class, 'register']);    // registro usuario
 
 Route::post('login', [UsuarioController::class, 'authenticate']); //login

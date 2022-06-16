@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inmueble;
+use Illuminate\Validation\Rules\In;
 
 class InmueblesController extends Controller
 {
@@ -16,7 +17,14 @@ class InmueblesController extends Controller
     public function index()
     {
         $inmuebles = Inmueble::all();
-        return view('inmuebles.index', ['inmuebles' => $inmuebles]);
+
+        $activos = $inmuebles->filter(function ($value, $key){
+           return data_get($value, 'estado') == 1;
+        });
+
+        $activos = $activos->all();
+
+        return view('inmuebles.index', ['inmuebles' => $activos]);
     }
 
     /**
@@ -84,5 +92,16 @@ class InmueblesController extends Controller
     public function destroy($id)
     {
         return redirect()->route('inmuebles.index')->with('success', 'inmueble eliminado');
+    }
+
+    public function rentar($id)
+    {
+        $inmueble = Inmueble::find($id);
+        $inmueble->estado = 0;
+        $inmueble->save();
+
+        $inmuebles = Inmueble::all();
+
+        return redirect()->route('inmuebles',['inmuebles' => $inmuebles])->with('success', 'Gracias por usar nuestro servicio');
     }
 }

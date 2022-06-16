@@ -270,25 +270,11 @@
 
 </header><!-- End Header -->
 
-<main id="main" class="main">
-    <div class="pagetitle">
-        <h1>Inmuebles disponibles</h1>
-    </div><!-- End Page Title -->
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="card">
-                    <div class="card-body mt-3">
 
-                        @yield('content')
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+@yield('content')
 
-</main><!-- End #main -->
+
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
