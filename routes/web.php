@@ -8,6 +8,7 @@ use App\Http\Controllers\CuentaController;
 use \App\Http\Controllers\PostController;
 use App\Http\Controllers\ArrendatarioController;
 use App\Http\Controllers\InmueblesController;
+use App\Http\Controllers\RentaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,12 +55,12 @@ Route::delete('/inmuebles/{id}', [InmueblesController::class, 'delete'])->name('
 Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
 
 //Israel routes
-Route::get('/perfilArrendatario', function (){
-    return view ('perfilArrendatario');
-});
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario'])->name('obtenerArrendatario');
+Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario']);
 
+Route::get('/rentaActual/{idCliente}', [RentaController::class, 'ObtenerRenta']);
+
+//Route::get('/rentaCalificar/{idCliente}/{calificacion}', [RentaController::class, 'CalificarRenta']);
 

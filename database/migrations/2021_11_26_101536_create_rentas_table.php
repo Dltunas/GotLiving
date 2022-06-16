@@ -16,9 +16,9 @@ class CreateRentasTable extends Migration
         Schema::create('rentas', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('estadoPago');
+            $table->text('estadoPago');
             $table->text('tiempoRenta');
-            $table->integer('calificacionIndividual');
+            $table->float('calificacionIndividual');
 
             $table->unsignedBigInteger('idCliente');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade');
