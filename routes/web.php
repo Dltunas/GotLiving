@@ -33,7 +33,7 @@ Route::post('register', [UsuarioController::class, 'register']);    // registro 
 
 Route::post('login', [UsuarioController::class, 'authenticate']); //login
 
-//Route::resource('inmueble', InmueblesController::class);
+//Route::resource('inmuebles', InmueblesController::class);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
 
