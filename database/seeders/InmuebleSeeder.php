@@ -24,7 +24,7 @@ class InmuebleSeeder extends Seeder
         $inmueble->tiempoRentaMax='12';
         $inmueble->tiempoRentaMin='6';
         $inmueble->precio='15000';
-        $inmueble->foto='una';
+        $inmueble->foto="asset('bootstrap/assets/img/casa1.jpg')";
         $inmueble->estado='1';
         $inmueble->idArrendatario='1';
         $inmueble->save();
@@ -38,7 +38,7 @@ class InmuebleSeeder extends Seeder
         $inmueble->tiempoRentaMax='12';
         $inmueble->tiempoRentaMin='1';
         $inmueble->precio='4000';
-        $inmueble->foto='dos';
+        $inmueble->foto="asset('bootstrap/assets/img/casa2.jpg')";
         $inmueble->estado='1';
         $inmueble->idArrendatario='2';
         $inmueble->save();
@@ -52,7 +52,7 @@ class InmuebleSeeder extends Seeder
         $inmueble->tiempoRentaMax='24';
         $inmueble->tiempoRentaMin='6';
         $inmueble->precio='8000';
-        $inmueble->foto='tres';
+        $inmueble->foto="asset('bootstrap/assets/img/casa3.jpg')";
         $inmueble->estado='1';
         $inmueble->idArrendatario='2';
         $inmueble->save();

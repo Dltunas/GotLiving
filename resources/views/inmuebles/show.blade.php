@@ -24,6 +24,11 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Foto</div>
+                                <div class="col-lg-9 col-md-8"><img style="width: 100%; max-width: 300px" src="{{ asset('bootstrap/assets/img/casa1.jpg') }}"></div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Calificacion</div>
                                 <div class="col-lg-9 col-md-8">{{ $inmueble->calificacionGlobal }}</div>
                             </div>
@@ -69,13 +74,11 @@
                                         <button type="submit" class="btn btn-primary">Rentar</button>
                                     </form>
                                 </div>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </div>
     </section>
 @endsection
