@@ -44,7 +44,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Tiempo de renta</div>
+                                <div class="col-lg-3 col-md-4 label">Meses a rentar</div>
                                 <div class="col-lg-9 col-md-8">
                                     <input type="range" class="form-range" id="tiempoRenta" name="tiempoRenta" max="{{ $inmueble->tiempoRentaMax }}" min="{{ $inmueble->tiempoRentaMin }}" value="0" onchange="document.getElementById('salidaTiempoRenta').value=value">
                                     <output id="salidaTiempoRenta" name="salidaTiempoRenta" for="tiempoRenta">1</output>

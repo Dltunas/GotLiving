@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inmueble;
+use App\Http\Controllers\RentaController;
 use Illuminate\Validation\Rules\In;
 
 class InmueblesController extends Controller
@@ -28,27 +29,6 @@ class InmueblesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        return redirect()->route('inmuebles.index')->with('success', 'nuevo inmueble');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -60,39 +40,7 @@ class InmueblesController extends Controller
         return view('inmuebles.show', ['inmueble' => $inmueble]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        return redirect()->route('inmuebles.index')->with('success', 'inmueble actualizado');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        return redirect()->route('inmuebles.index')->with('success', 'inmueble eliminado');
-    }
 
     public function rentar($id)
     {
@@ -100,8 +48,6 @@ class InmueblesController extends Controller
         $inmueble->estado = 0;
         $inmueble->save();
 
-        $inmuebles = Inmueble::all();
-
-        return redirect()->route('inmuebles',['inmuebles' => $inmuebles]);
+        return redirect()->route('rentaActual',['id' => $inmueble->idInmueble]);
     }
 }
