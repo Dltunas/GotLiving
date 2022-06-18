@@ -49,17 +49,15 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 //Salomon routes
 Route::get('/inmuebles', [InmueblesController::class, 'index'])->name('inmuebles');
 Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-show');
-Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
-
-Route::get('/rentaActual/{id}',[RentaController::class, 'store'])->name('rentas');
+Route::post('/inmuebles/{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
 
 //Israel routes
-Route::get('/perfilArrendatario', function (){
-    return view ('perfilArrendatario');
-});
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario'])->name('obtenerArrendatario');
+Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario']);
 
+Route::get('/rentaActual/{idRenta}', [RentaController::class, 'ObtenerRenta']);
+
+Route::patch('/rentaActual/{idRenta}', [RentaController::class, 'CalificarRenta'])->name('Calificar-Renta');
 
