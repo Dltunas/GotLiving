@@ -93,17 +93,12 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Estado del pago</div>
-                    <div class="col-lg-9 col-md-8"> {{ $renta->estadoPago }} </div>
-                  </div>
-
-                  <div class="row">
                     <div class="col-lg-3 col-md-4 label">Tú calificación sobre este inmueble</div>
-                      <div class="col-lg-9 col-md-8">{{ $calificacionInd }}</div>
+                      <div class="col-lg-9 col-md-8">{{ $calificacionInd }} puntos de 10</div>
                   </div> 
 
 
-       <!--           
+       
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#basicModal">
                       Calificar renta
               </button>
@@ -116,9 +111,11 @@
                     </div>
                     <div class="modal-body">
                       Ingresa la calificación que deseas asignar a este inmueble.
-                      <form action="/rentaCalificar/{{ $renta->id }}/{{request()->input('calificacion')}}">
+                      <form action="{{ route('Calificar-Renta', ['idRenta' => $renta->id]) }}" method="POST">
+                        @method('PATCH')
+                        @csrf
                       <div class="form-group">
-                          <select class="form-control" id="calificacion">
+                          <select name="calificacion" class="form-control">
                             <option>0</option>
                             <option>1</option>
                             <option>2</option>
@@ -145,7 +142,6 @@
                 </div>
               </div>
                   
--->
                 </div>
             </div>
 
@@ -157,6 +153,6 @@
     
 </section>
 
-</main><!-- End #main -->
+</main>
 </body>
 </html>

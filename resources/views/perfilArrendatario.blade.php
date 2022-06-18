@@ -106,7 +106,7 @@
         
 </section>
 
-<form action="/welcome">
+<form action="{{ url()->previous() }}">
     <button type="submit" class="btn btn-primary btn-lg">Regresar</button> 
 </form>
         

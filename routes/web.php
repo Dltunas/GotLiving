@@ -60,7 +60,7 @@ Route::get('/welcome', function () {
 });
 Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario']);
 
-Route::get('/rentaActual/{idCliente}', [RentaController::class, 'ObtenerRenta']);
+Route::get('/rentaActual/{idRenta}', [RentaController::class, 'ObtenerRenta']);
 
-//Route::get('/rentaCalificar/{idCliente}/{calificacion}', [RentaController::class, 'CalificarRenta']);
+Route::patch('/rentaActual/{idRenta}', [RentaController::class, 'CalificarRenta'])->name('Calificar-Renta');
 

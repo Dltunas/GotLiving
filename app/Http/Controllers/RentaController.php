@@ -27,13 +27,18 @@ class RentaController extends Controller
         'inmueble' => $inmueble, 'arrendatario' => $arrendatario, 'calificacionInd' => $calificacionInd]);
     }
 
-    public function CalificarRenta ($idRenta, $calificacion){
+    public function CalificarRenta (Request $request, $idRenta){
 
         $renta = Renta::find($idRenta);
-        $renta->calificacionIndividual = 5;
+        $renta->calificacionIndividual = $request->calificacion;
         $renta->save();
+        
+        return RentaController::ObtenerRenta($idRenta);
+    }
 
-        //return redirect()->route('rentaActual/');
+    public function TerminarRenta($idRenta, Request $request){
+        
+
     }
 
 }

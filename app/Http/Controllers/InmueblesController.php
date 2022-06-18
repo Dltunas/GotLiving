@@ -102,6 +102,8 @@ class InmueblesController extends Controller
 
         $inmuebles = Inmueble::all();
 
+        
+
         return redirect()->route('inmuebles',['inmuebles' => $inmuebles])->with('success', 'Gracias por usar nuestro servicio');
     }
 }
