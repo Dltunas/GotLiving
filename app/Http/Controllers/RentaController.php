@@ -27,6 +27,18 @@ class RentaController extends Controller
         'inmueble' => $inmueble, 'arrendatario' => $arrendatario, 'calificacionInd' => $calificacionInd]);
     }
 
+    public function InmuebleRenta($idInmueble){
+        //Obtener $idCliente
+
+        $rentas = Renta::all();
+        $rentasInmueble = array();
+        foreach ($rentas as $renta){
+            if($renta->idInmueble == $idInmueble){
+                array_push($rentasCliente, $renta);
+            }
+        }
+    }
+
     public function CalificarRenta (Request $request, $idRenta){
 
         $renta = Renta::find($idRenta);
@@ -36,9 +48,30 @@ class RentaController extends Controller
         return RentaController::ObtenerRenta($idRenta);
     }
 
-    public function TerminarRenta($idRenta, Request $request){
-        
+    public function ObtenerListaRentas($idCliente){
 
+        $rentas = Renta::all();
+
+        $rentasCliente = array();
+        foreach ($rentas as $renta){
+            if($renta->idCliente == $idCliente){
+                array_push($rentasCliente, $renta);
+            }
+        }
+
+        $rentasPresentacion = new \ArrayObject();
+        
+        foreach ($rentasCliente as $rentaCliente){
+            $inmueble = Inmueble::find($rentaCliente->idInmueble);
+            $idRenta = $rentaCliente->id;
+            $idInmueble = $inmueble->id;
+            $tituloInmueble = $inmueble->titulo;
+            $descripcionInmueble = $inmueble->descripcion;
+            $fotoInmueble = $inmueble->foto;
+            $rentasPresentacion->append(array($rentasPresentacion, $idRenta, $idInmueble, $fotoInmueble, $tituloInmueble, $descripcionInmueble));
+        }
+
+        return view('rentasCliente', ['rentasPresentacion' => $rentasPresentacion]);
     }
 
 }

@@ -58,9 +58,13 @@ Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmu
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/rentas/{idCliente}',[RentaController::class, 'ObtenerListaRentas']);
+
 Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario']);
 
-Route::get('/rentaActual/{idRenta}', [RentaController::class, 'ObtenerRenta']);
+Route::get('/rentaActual/{idRenta}', [RentaController::class, 'ObtenerRenta'])->name('Obtener-Renta');
 
 Route::patch('/rentaActual/{idRenta}', [RentaController::class, 'CalificarRenta'])->name('Calificar-Renta');
+
 
