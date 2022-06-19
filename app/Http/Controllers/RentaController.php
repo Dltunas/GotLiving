@@ -75,6 +75,15 @@ class RentaController extends Controller
     }
 
     public function mostrarRenta($id){
+        $inmueble = Inmueble::find($id);
+
+        $renta = new Renta();
+        $renta->estadoPago = 'pendiente';
+        $renta->tiempoRenta = '1';
+        $renta->calificacionIndividual = '0';
+        $renta->idCliente = 1;
+        $renta->idInmueble = $inmueble->id;
+        $renta->save();
         return redirect()->route('inmuebles');
     }
 
