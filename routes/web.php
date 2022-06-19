@@ -48,11 +48,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
 //Salomon routes
 Route::get('/inmuebles', [InmueblesController::class, 'index'])->name('inmuebles');
-Route::post('/inmuebles', [InmueblesController::class, 'store'])->name('inmuebles');
-Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-edit');
-Route::patch('/inmuebles/{id}', [InmueblesController::class, 'update'])->name('inmuebles-update');
-Route::delete('/inmuebles/{id}', [InmueblesController::class, 'delete'])->name('inmuebles-destroy');
+Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-show');
 Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
+
+Route::get('/rentaActual/{id}', [RentaController::class, 'mostrarRenta'])->name('renta-mostrar');
 
 //Israel routes
 Route::get('/welcome', function () {

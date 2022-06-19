@@ -23,7 +23,7 @@ class RentaController extends Controller
             $calificacionInd = $renta->calificacionIndividual;
         }
 
-        return view('rentaActual', ['renta' => $renta, 'cliente' => $cliente, 
+        return view('rentaActual', ['renta' => $renta, 'cliente' => $cliente,
         'inmueble' => $inmueble, 'arrendatario' => $arrendatario, 'calificacionInd' => $calificacionInd]);
     }
 
@@ -44,7 +44,7 @@ class RentaController extends Controller
         $renta = Renta::find($idRenta);
         $renta->calificacionIndividual = $request->calificacion;
         $renta->save();
-        
+
         return RentaController::ObtenerRenta($idRenta);
     }
 
@@ -60,7 +60,7 @@ class RentaController extends Controller
         }
 
         $rentasPresentacion = new \ArrayObject();
-        
+
         foreach ($rentasCliente as $rentaCliente){
             $inmueble = Inmueble::find($rentaCliente->idInmueble);
             $idRenta = $rentaCliente->id;
@@ -72,6 +72,10 @@ class RentaController extends Controller
         }
 
         return view('rentasCliente', ['rentasPresentacion' => $rentasPresentacion]);
+    }
+
+    public function mostrarRenta($id){
+        return redirect()->route('inmuebles');
     }
 
 }
