@@ -48,6 +48,6 @@ class InmueblesController extends Controller
         $inmueble->estado = 0;
         $inmueble->save();
 
-        return redirect()->route('rentaActual',['id' => $inmueble->idInmueble]);
+        return redirect()->route('renta-mostrar',['id' => $inmueble->idInmueble]);
     }
 }

@@ -49,7 +49,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 //Salomon routes
 Route::get('/inmuebles', [InmueblesController::class, 'index'])->name('inmuebles');
 Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-show');
-Route::post('/inmuebles/{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
+Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
+Route::get('/rentaActual/{id}', [RentaController::class, 'show'])->name('renta-mostrar');
+
 
 //Israel routes
 Route::get('/welcome', function () {
