@@ -33,7 +33,7 @@
                                         <td>{{ $inmueble->direccion }}</td>
                                         <td>{{ $inmueble->precio }}</td>
                                         <td>
-                                            <form action="{{ route('inmuebles-edit', ['id' => $inmueble -> id]) }}">
+                                            <form action="{{ route('inmuebles-show', ['id' => $inmueble -> id]) }}">
                                                 <button type="submit" class="btn btn-primary">Reservar</button>
                                             </form>
                                         </td>
