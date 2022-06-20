@@ -28,9 +28,7 @@ class ApplicationTester
 {
     use TesterTrait;
 
-    private $application;
-    private $input;
-    private $statusCode;
+    private Application $application;
 
     public function __construct(Application $application)
     {
@@ -49,7 +47,7 @@ class ApplicationTester
      *
      * @return int The command exit code
      */
-    public function run(array $input, array $options = [])
+    public function run(array $input, array $options = []): int
     {
         $this->input = new ArrayInput($input);
         if (isset($options['interactive'])) {

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Renta;
 use App\Models\Cliente;
@@ -12,7 +11,7 @@ use App\Models\Arrendatario;
 class RentaController extends Controller
 {
     public function ObtenerRenta ($idRenta){
-        $idCliente = 1; // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+        $idCliente = auth()->user()->id;
 
         $renta = Renta::find($idRenta);
         if($renta->idCliente == $idCliente){
@@ -35,14 +34,13 @@ class RentaController extends Controller
         }
 
 
-        
+
     }
 
     public function ObtenerListaRentas(){
 
-        $idCliente = 1; //WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+            $idCliente = auth()->user()->id;
 
-        if($idCliente != null){ // Si el idCliente no existe, no está logeado entonces ¿es null? o ¿es otro valor? ponlo WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
             $rentas = Renta::all();
 
             $rentasCliente = array();
@@ -51,9 +49,9 @@ class RentaController extends Controller
                     array_push($rentasCliente, $renta);
                 }
             }
-    
+
             $rentasPresentacion = new \ArrayObject();
-    
+
             foreach ($rentasCliente as $rentaCliente){
                 $inmueble = Inmueble::find($rentaCliente->idInmueble);
                 $idRenta = $rentaCliente->id;
@@ -63,38 +61,35 @@ class RentaController extends Controller
                 $fotoInmueble = $inmueble->foto;
                 $rentasPresentacion->append(array($rentasPresentacion, $idRenta, $idInmueble, $fotoInmueble, $tituloInmueble, $descripcionInmueble));
             }
-    
+
             return view('rentasCliente', ['rentasPresentacion' => $rentasPresentacion]);
-        }else{
-            //Pon aquí un return hacia el login. WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-        }
-        
+
     }
 
     public function CalificarRenta (Request $request, $idRenta){
 
-        $idCliente = 1; // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+        $idCliente = auth()->user()->id;
 
         $renta = Renta::find($idRenta);
         if($renta->idCliente == $idCliente){
             $calificacionIndividualActual = $renta->calificacionIndividual;
             $renta->calificacionIndividual = $request->calificacion;
             $renta->save();
-    
+
             $inmueble = Inmueble::find($renta->idInmueble);
             if($calificacionIndividualActual == -1){
                $inmueble->calificacionGlobal = (($inmueble->calificacionGlobal * $inmueble->cantidadCalificaciones)+$renta->calificacionIndividual)/($inmueble->cantidadCalificaciones+1);
             }else{
             $inmueble->calificacionGlobal = (($inmueble->calificacionGlobal * $inmueble->cantidadCalificaciones)-$calificacionIndividualActual+$renta->calificacionIndividual)/$inmueble->cantidadCalificaciones;
             }
-    
+
             $inmueble->save();
-            
+
             return RentaController::ObtenerRenta($idRenta);
         }else{
             return redirect('/rentas/');
         }
-        
+
     }
 
     public function RentarInmueble(Request $request, $idInmueble){
@@ -106,7 +101,7 @@ class RentaController extends Controller
         $renta->estadoPago = 'pendiente';
         $renta->tiempoRenta = $request->tiempoRenta;
         $renta->calificacionIndividual = '-1';
-        $renta->idCliente = 1; // WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwwwwwwww
+        $renta->idCliente = auth()->user()->id;
         $renta->idInmueble = $idInmueble;
         $renta->save();
 

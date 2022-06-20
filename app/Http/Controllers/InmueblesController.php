@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Inmueble;
-use App\Http\Controllers\RentaController;
-use Illuminate\Validation\Rules\In;
 
 class InmueblesController extends Controller
 {
@@ -30,7 +26,7 @@ class InmueblesController extends Controller
 
     public function MostrarInmueble($idInmueble)
     {
-        $inmueble = Inmueble::find($idInmueble); 
+        $inmueble = Inmueble::find($idInmueble);
         return view('inmuebles.show', ['inmueble' => $inmueble]);
     }
 }

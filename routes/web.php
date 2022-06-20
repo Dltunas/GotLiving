@@ -1,13 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\CuentaController;
-use \App\Http\Controllers\PostController;
 use App\Http\Controllers\ArrendatarioController;
 use App\Http\Controllers\InmueblesController;
+use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RentaController;
 
 /*
@@ -21,49 +18,41 @@ use App\Http\Controllers\RentaController;
 |
 */
 
-Route::get('/', function (){
-    return view ('login');
-});
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('auth');
 
-Route::post('register', [UsuarioController::class, 'register']);    // registro usuario
+Route::get('/register', [RegisterController::class, 'create']) //abrir pantalla registro
+->middleware('guest')
+    ->name('register.index');
 
-Route::post('login', [UsuarioController::class, 'authenticate']); //login
+Route::post('/register', [RegisterController::class, 'store']) //hacer el registro
+->name('register.store');
 
-Route::group(['middleware' => ['jwt.verify']], function() {
+Route::get('/login', [SessionsController::class, 'create']) //abrir pantalla login
+->middleware('guest')
+    ->name('login.index');
 
-    //Route::post('register/cuenta',[CuentaController::class, 'create']);   //Registrar cuenta
+Route::post('/login', [SessionsController::class, 'store']) //loguearse
+->name('login.store');
 
-    Route::post('logout',[UsuarioController::class, 'logout']); //Cerrar sesión
-
-    //HomeController
-    Route::get('{idUsuario}/mostrarCuenta', [HomeController::class, 'mostrarCuenta']); //Para ver el perfil del arrendatario
-
-    //Cuenta
-    Route::get('getCuenta',[CuentaController::class, 'getCuenta']); //Para ver nuestro propio pearfil
-    Route::put('editInfo',[CuentaController::class, 'editInfo']); //Editar la info de nuestro propio perfil
-
-    //Post
-    Route::get('{idUsuario}/getPostsPerfilUsuario', [PostController::class, 'getPostsPerfilUsuario']); //Ver los posts del arrendatario en su perfil (No se si es necesario)
-});
+Route::get('/logout', [SessionsController::class, 'destroy']) //Desloguearse
+->middleware('auth')
+    ->name('login.destroy');
 
 //Salomon routes
-Route::get('/catalogoInmuebles', [InmueblesController::class, 'MostrarCatalogoInmuebles'])->name('Catalogo-Inmuebles');
+Route::get('/catalogoInmuebles', [InmueblesController::class, 'MostrarCatalogoInmuebles'])->middleware('auth')->name('Catalogo-Inmuebles');
 
-Route::get('/inmueble/{idInmueble}', [InmueblesController::class, 'MostrarInmueble'])->name('Mostrar-Inmueble');
+Route::get('/inmueble/{idInmueble}', [InmueblesController::class, 'MostrarInmueble'])->middleware('auth')->name('Mostrar-Inmueble');
 
-Route::patch('/rentarInmueble/{idInmueble}', [RentaController::class, 'RentarInmueble'])->name('Rentar-Inmueble');
+Route::patch('/rentarInmueble/{idInmueble}', [RentaController::class, 'RentarInmueble'])->middleware('auth')->name('Rentar-Inmueble');
 
 //Israel routes
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('/rentas',[RentaController::class, 'ObtenerListaRentas'])->middleware('auth')->name('Rentas');
 
-Route::get('/rentas',[RentaController::class, 'ObtenerListaRentas'])->name('Rentas');
+Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario'])->middleware('auth');
 
-Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario']);
+Route::get('/rentaActual/{idRenta}', [RentaController::class, 'ObtenerRenta'])->name('Obtener-Renta')->middleware('auth');
 
-Route::get('/rentaActual/{idRenta}', [RentaController::class, 'ObtenerRenta'])->name('Obtener-Renta');
-
-Route::patch('/rentaActual/{idRenta}', [RentaController::class, 'CalificarRenta'])->name('Calificar-Renta');
-
+Route::patch('/rentaActual/{idRenta}', [RentaController::class, 'CalificarRenta'])->name('Calificar-Renta')->middleware('auth');
 
