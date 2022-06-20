@@ -41,10 +41,12 @@
 
   <div class="container-fluid px-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
-        <div class="container-fluid d-flex"> <a class="navbar-brand" href="#">GotLiving</a>
+        <div class="container-fluid d-flex"> <a class="navbar-brand">GotLiving</a>
             <ul class="nav nav-tabs" id="tab" role="tablist">
-                <li class="nav-item" role="presentation"> <a class="nav-link active" id="rentas-tab" data-toggle="tab" href="/rentas" role="tab" aria-controls="home" aria-selected="true">Rentas</a> </li>
-                <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-toggle="tab" href="/inmuebles" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a> </li>
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="rentas-tab" data-toggle="tab" href="/rentas" role="tab" aria-controls="home" aria-selected="true">Rentas</a> </li>
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-toggle="tab" href="/catalogoInmuebles" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a> </li>
+                <li class="nav-item" role="presentation"> <a  href="/logout" role="tab">
+                     <img style="height: 35px; width: 35px" src="{{ asset('bootstrap/assets/img/logouticon.png') }}" href="/rentas">  </a>  </li>   
             </ul>
         </div>
     </nav>
@@ -62,7 +64,7 @@
 
                 @foreach ($rentasPresentacion as $rentaPresentacion)
                 <div class="col-md-4">
-                    <div class="card"> <img src="{{ asset('bootstrap/assets/img/'.$rentaPresentacion[3]) }}"  height="170" class="card-img-top">
+                    <div class="card"> <img src="{{ asset('bootstrap/assets/imgcasas/'.$rentaPresentacion[3]) }}"  height="170" class="card-img-top">
                         <div class="card-body">
                             <div class="d-flex justify-content-between"> <span class="font-weight-bold">{{$rentaPresentacion[4]}}</span></div>
                             <p class="card-text mb-1 mt-1">{{$rentaPresentacion[5]}}</p>
@@ -79,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-@endforeach
+                @endforeach
 
                 </div>
             </div>

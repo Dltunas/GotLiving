@@ -40,6 +40,20 @@
   ======================================================== -->
 </head>
 <body>
+
+<div class="container-fluid px-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+        <div class="container-fluid d-flex"> <a class="navbar-brand">GotLiving</a>
+            <ul class="nav nav-tabs" id="tab" role="tablist">
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="rentas-tab" data-toggle="tab" href="/rentas" role="tab" aria-controls="home" aria-selected="true">Rentas</a> </li>
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-toggle="tab" href="/catalogoInmuebles" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a> </li>
+                <li class="nav-item" role="presentation"> <a  href="/logout" role="tab">
+                     <img style="height: 35px; width: 35px" src="{{ asset('bootstrap/assets/img/logouticon.png') }}" href="/rentas">  </a>  </li>   
+            </ul>
+        </div>
+    </nav>
+</div>
+
 <main id="main" class="main">
 
 <div class="pagetitle">

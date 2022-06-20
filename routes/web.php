@@ -47,18 +47,18 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 });
 
 //Salomon routes
-Route::get('/inmuebles', [InmueblesController::class, 'index'])->name('inmuebles');
-Route::get('/inmuebles/{id}', [InmueblesController::class, 'show'])->name('inmuebles-show');
-Route::get('/inmuebles{id}', [InmueblesController::class, 'rentar'])->name('inmuebles-rentar');
+Route::get('/catalogoInmuebles', [InmueblesController::class, 'MostrarCatalogoInmuebles'])->name('Catalogo-Inmuebles');
 
-Route::get('/rentaActual/{id}', [RentaController::class, 'mostrarRenta'])->name('renta-mostrar');
+Route::get('/inmueble/{idInmueble}', [InmueblesController::class, 'MostrarInmueble'])->name('Mostrar-Inmueble');
+
+Route::patch('/rentarInmueble/{idInmueble}', [RentaController::class, 'RentarInmueble'])->name('Rentar-Inmueble');
 
 //Israel routes
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/rentas/{idCliente}',[RentaController::class, 'ObtenerListaRentas']);
+Route::get('/rentas',[RentaController::class, 'ObtenerListaRentas'])->name('Rentas');
 
 Route::get('/arrendatario/{idArrendatario}', [ArrendatarioController::class, 'ObtenerArrendatario']);
 

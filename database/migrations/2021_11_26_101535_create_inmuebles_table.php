@@ -18,7 +18,7 @@ class CreateInmueblesTable extends Migration
 
             $table->text('descripcion');
             $table->text('titulo');
-            $table->integer('calificacionGlobal');
+            $table->float('calificacionGlobal');
             $table->integer('cantidadCalificaciones');
             $table->text('direccion');
             $table->text('tiempoRentaMax');

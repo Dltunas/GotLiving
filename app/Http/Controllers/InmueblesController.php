@@ -15,7 +15,7 @@ class InmueblesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function MostrarCatalogoInmuebles()
     {
         $inmuebles = Inmueble::all();
 
@@ -28,26 +28,9 @@ class InmueblesController extends Controller
         return view('inmuebles.index', ['inmuebles' => $activos]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function MostrarInmueble($idInmueble)
     {
-        $inmueble = Inmueble::find($id);
+        $inmueble = Inmueble::find($idInmueble); 
         return view('inmuebles.show', ['inmueble' => $inmueble]);
-    }
-
-
-
-    public function rentar($id)
-    {
-        $inmueble = Inmueble::find($id);
-        $inmueble->estado = 0;
-        $inmueble->save();
-
-        return redirect()->route('renta-mostrar', ['id' => $inmueble->id]);
     }
 }

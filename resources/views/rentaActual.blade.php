@@ -40,6 +40,20 @@
   ======================================================== -->
 </head>
 <body>
+
+<div class="container-fluid px-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+        <div class="container-fluid d-flex"> <a class="navbar-brand">GotLiving</a>
+            <ul class="nav nav-tabs" id="tab" role="tablist">
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="rentas-tab" data-toggle="tab" href="/rentas" role="tab" aria-controls="home" aria-selected="true">Rentas</a> </li>
+                <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-toggle="tab" href="/catalogoInmuebles" role="tab" aria-controls="profile" aria-selected="false">Catálogo</a> </li>
+                <li class="nav-item" role="presentation"> <a  href="/logout" role="tab">
+                     <img style="height: 35px; width: 35px" src="{{ asset('bootstrap/assets/img/logouticon.png') }}" href="/rentas">  </a>  </li>   
+            </ul>
+        </div>
+    </nav>
+</div>
+
 <main id="main" class="main">
 
 <div class="pagetitle">
@@ -65,8 +79,13 @@
                   </div>
 
                   <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Calificación global</div>
+                    <div class="col-lg-9 col-md-8">{{ $inmueble->calificacionGlobal }} puntos de 10 </div>
+                  </div>
+
+                  <div class="row">
                     <div class="col-lg-3 col-md-4 label">Nombre del arrendatario</div>
-                    <div class="col-lg-9 col-md-8">{{ $arrendatario->nombre }} {{ $arrendatario->apellidos }}</div>
+                    <div class="col-lg-9 col-md-8"><a href="/arrendatario/{{$arrendatario->id}}">{{ $arrendatario->nombre }} {{ $arrendatario->apellidos }}</a></div>
                   </div> 
 
                   <div class="row">
@@ -94,7 +113,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Tú calificación sobre este inmueble</div>
-                      <div class="col-lg-9 col-md-8">{{ $calificacionInd }} puntos de 10</div>
+                      <div class="col-lg-9 col-md-8">{{ $calificacionInd }}</div>
                   </div> 
 
 
@@ -149,7 +168,10 @@
   </div>
 </div>
 </div>
-
+<form action="{{ route('Rentas') }}" method="GET">
+                            @csrf
+                            <button type="submit" class="btn btn-secondary">Regresar</button>
+                        </form>
     
 </section>
 
